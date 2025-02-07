@@ -10,8 +10,8 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough 
 from langchain_core.prompts import ChatPromptTemplate
 
-from dotenv import load_dotenv
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
 
 
 def vector_embedding():
@@ -30,10 +30,15 @@ def vector_embedding():
         st.session_state.final_documents=st.session_state.text_splitter.split_documents(st.session_state.docs) #splitting
         st.session_state.vectors=FAISS.from_documents(st.session_state.final_documents,st.session_state.embeddings) #vector OpenAI embeddings
 
-import os
+# import os
 # Load the groq API KEY
-groq_api_key = os.getenv('GROQ_API_KEY')
-jina_api_key = os.getenv('JINA_API_KEY')
+# groq_api_key = os.getenv('GROQ_API_KEY')
+# jina_api_key = os.getenv('JINA_API_KEY')
+
+
+groq_api_key = st.secrets['GROQ_API_KEY']
+jina_api_key = st.secrets['JINA_API_KEY']
+
 st.title("ChatGroq with Llama3.2")
 
 llm = ChatGroq(groq_api_key=groq_api_key,
