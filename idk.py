@@ -76,7 +76,7 @@ def format_docs(docs):
 
 import time
 
-if question and st.session_state.flag:
+if question:
 
     retriever = st.session_state.vectors.as_retriever(search_type = 'similarity', 
                                       search_kwargs = {'k': 3})
