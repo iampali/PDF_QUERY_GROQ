@@ -97,6 +97,6 @@ if question:
     with st.expander("Document Similarity Search"):
         # Find the relevant chunks
         for doc in docs:
-            st.write(doc)
+            st.write(doc['page_content'])
             st.write("--------------------------------")
 
